@@ -1,0 +1,23 @@
+{
+  "name": "featuredoc",
+  "version": "0.0.1",
+  "description": "As-built functional docs generator",
+  "main": "cli/index.js",
+  "type": "module",
+  "bin": {
+    "featuredoc": "./cli/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "documentation",
+    "generator",
+    "markdown"
+  ],
+  "author": "Jelmer Cormont",
+  "license": "MIT",
+  "dependencies": {
+    "glob": "^10.3.10"
+  }
+}
