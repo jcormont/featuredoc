@@ -1,6 +1,6 @@
 {
   "name": "featuredoc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "As-built functional docs generator",
   "main": "cli/index.js",
   "type": "module",
