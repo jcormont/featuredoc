@@ -44,6 +44,20 @@ An extra newline is added automatically after all non-contiguous documentation l
 */}
 ```
 
+**Next-line appends** — if a line ends with a `\` character, the next line is appended to the current line as part of the documentation line. This is useful for including existing source code documentation (e.g. JSDoc) in your output. Any comment syntax on the next line is removed, including starting and ending comment characters (i.e. `/*`, `*/`, `//`, etc.).
+
+```
+//@@ - Property: `name` --\
+/** The customer name */
+name: string;
+```
+
+This results in the following output:
+
+```
+- Property: `name` -- The customer name
+```
+
 **Imports** — you can directly import the content of one file inside another. The prefixed content of the imported file is then no longer included in the output on its own.
 
 ```

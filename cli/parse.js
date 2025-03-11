@@ -47,7 +47,10 @@ export async function parseFile(filePath, content) {
     // Check for documentation line
     const docMatch = line.match(DOC_LINE_PATTERN);
     if (docMatch) {
-      const docLine = docMatch[1];
+      let docLine = docMatch[1];
+
+      // Remove full-file documentation marker
+      docLine = docLine.replace(DOC_FILE_PATTERN, "");
 
       // Check if it's an import
       const importMatch = docLine.match(IMPORT_PATTERN);
@@ -63,6 +66,11 @@ export async function parseFile(filePath, content) {
         continue;
       }
 
+      // Skip if the line is empty or an empty HTML comment
+      if (docLine.replace(/(\<\!\-*)|(\-*\>)/g, "").match(/^\s*$/)) {
+        continue;
+      }
+
       // Check if we need to add a newline
       const isCurrentLineListItem = isListItem(docLine);
       if (lastDocLineIndex !== -1 && lastDocLineIndex !== i - 1) {
@@ -70,6 +78,18 @@ export async function parseFile(filePath, content) {
         if (!(isCurrentLineListItem && wasListItem)) {
           addNewline();
         }
+      }
+
+      // Check if it's a next-line append
+      if (docLine.endsWith("\\")) {
+        i++;
+        docLine =
+          docLine.slice(0, -1) +
+          (lines[i] || "")
+            .replace(/^\s*\/\//, "") // Remove leading //
+            .replace(/^\s*\/\*+/, "") // Remove leading /* or /**
+            .replace(/\*\/\s*$/, "") // Remove trailing */
+            .replace(/^\s*#+/, ""); // Remove leading #
       }
 
       // Add the documentation line

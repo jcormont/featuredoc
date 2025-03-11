@@ -9,8 +9,12 @@
  * @returns {string} The name of the person
  */
 function test(name) {
-  //@@ The test function returns the name of the person.
-  return name;
+  //@@ Variable: `example` --\
+  /** An example variable (string) */
+  const example = "Hello, ";
+
+  //@@ The test function returns a message with the name of the person.
+  return example + name;
 }
 
 test("John");
