@@ -68,7 +68,6 @@ async function runFiles(basePath, ignorePatterns) {
   for (const dir of dirs) {
     if (dir.startsWith(".")) continue;
     const dirPath = path.resolve(basePath, dir);
-    console.log(dirPath);
     if ((await stat(dirPath)).isDirectory()) {
       await runFiles(dirPath, ignorePatterns);
     }
