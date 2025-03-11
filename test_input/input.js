@@ -10,13 +10,16 @@ export class TestClass {
 
   //@@ Methods:
 
-  //@@ -\
+  //@@ | Name | Description
+  //@@ |------|-------------
+
+  //@@ | `test` |\
   /** A test method that returns a message with the name of the person */
   test(name) {
     return this.example + name;
   }
 
-  //@@ -\
+  //@@ | `test2` |\
   /** A test method that returns a number */
   test2() {
     return 123;

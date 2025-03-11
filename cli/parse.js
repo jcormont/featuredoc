@@ -13,12 +13,16 @@ const UNORDERED_LIST_PATTERN = /^\s*[-*]\s+/;
 const ORDERED_LIST_PATTERN = /^\s*\d+\.\s+/;
 
 /**
- * Check if a line is part of a list (ordered or unordered)
+ * Check if a line is part of a list (ordered or unordered) or a table
  * @param {string} line The documentation line to check
  * @returns {boolean} True if the line is part of a list
  */
 function isListItem(line) {
-  return UNORDERED_LIST_PATTERN.test(line) || ORDERED_LIST_PATTERN.test(line);
+  return (
+    UNORDERED_LIST_PATTERN.test(line) ||
+    ORDERED_LIST_PATTERN.test(line) ||
+    line.startsWith("|")
+  );
 }
 
 /**

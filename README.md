@@ -28,7 +28,7 @@ Prefix FeatureDoc lines within your source code with `//@@` or `##@@` to include
 //@@ > Add _any_ kind of Markdown formatting here.
 ```
 
-An extra newline is added automatically after all non-contiguous documentation lines, _except_ between lines that are part of an ordered or unordered list (i.e. starting with `-`, `*`, or `1.`, `2.` and so on).
+An extra newline is added automatically after all non-contiguous documentation lines, _except_ between lines that are part of an ordered or unordered list, or a table (i.e. starting with `-`, `*`, or `1.`, `2.` and so on, or a line starting with `|`).
 
 **Entire files** — To include the entire contents of a file, include the following line _anywhere_ inside your file (e.g. within a comment). Whitespace in front of this line is allowed.
 
