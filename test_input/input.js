@@ -2,7 +2,27 @@
 //@@ +ref ./ref/A.md
 //@@ # Test input file
 
-//@@ **This file includes a test function**
+//@@ **Test class**
+export class TestClass {
+  //@@ - Property: `example` --\
+  /** An example property (string) */
+  example = "Hello, ";
+
+  //@@ Methods:
+
+  //@@ -\
+  /** A test method that returns a message with the name of the person */
+  test(name) {
+    return this.example + name;
+  }
+
+  //@@ -\
+  /** A test method that returns a number */
+  test2() {
+    return 123;
+  }
+}
+//@@ **Test function**
 /**
  * This is a test function.
  * @param {string} name The name of the person

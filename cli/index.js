@@ -67,8 +67,10 @@ async function runFiles(basePath, ignorePatterns) {
   dirs.sort((a, b) => a.localeCompare(b));
   for (const dir of dirs) {
     if (dir.startsWith(".")) continue;
-    if ((await stat(dir)).isDirectory()) {
-      await runFiles(path.resolve(dir), ignorePatterns);
+    const dirPath = path.resolve(basePath, dir);
+    console.log(dirPath);
+    if ((await stat(dirPath)).isDirectory()) {
+      await runFiles(dirPath, ignorePatterns);
     }
   }
 }

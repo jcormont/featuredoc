@@ -26,10 +26,7 @@ export async function loadAndProcessFile(filePath) {
     const binaryContent = await readFile(filePath);
 
     // Skip binary files
-    if (!isTextFile(filePath, binaryContent)) {
-      console.log(`Skipping binary file: ${filePath}`);
-      return;
-    }
+    if (!isTextFile(filePath, binaryContent)) return;
 
     // Parse file and collate documentation
     const textContent = binaryContent.toString("utf8");

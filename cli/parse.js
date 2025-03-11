@@ -71,6 +71,17 @@ export async function parseFile(filePath, content) {
         continue;
       }
 
+      // Check if it's a next-line append
+      if (docLine.endsWith("\\")) {
+        docLine =
+          docLine.slice(0, -1) +
+          (lines[i + 1] || "")
+            .replace(/^\s*\/\//, "") // Remove leading //
+            .replace(/^\s*\/\*+/, "") // Remove leading /* or /**
+            .replace(/\*\/\s*$/, "") // Remove trailing */
+            .replace(/^\s*#+/, ""); // Remove leading #
+      }
+
       // Check if we need to add a newline
       const isCurrentLineListItem = isListItem(docLine);
       if (lastDocLineIndex !== -1 && lastDocLineIndex !== i - 1) {
@@ -78,18 +89,6 @@ export async function parseFile(filePath, content) {
         if (!(isCurrentLineListItem && wasListItem)) {
           addNewline();
         }
-      }
-
-      // Check if it's a next-line append
-      if (docLine.endsWith("\\")) {
-        i++;
-        docLine =
-          docLine.slice(0, -1) +
-          (lines[i] || "")
-            .replace(/^\s*\/\//, "") // Remove leading //
-            .replace(/^\s*\/\*+/, "") // Remove leading /* or /**
-            .replace(/\*\/\s*$/, "") // Remove trailing */
-            .replace(/^\s*#+/, ""); // Remove leading #
       }
 
       // Add the documentation line
