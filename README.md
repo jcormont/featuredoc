@@ -21,11 +21,11 @@ featuredoc
 
 ### Syntax
 
-Prefix FeatureDoc lines within your source code with `//@@` or `##@@` to include them in the generated output. Additional whitespace in front of the comment tag is allowed.
+Prefix FeatureDoc lines within your source code with `// @@` or `## @@` to include them in the generated output. Additional whitespace in front of the comment tag is allowed. The space between the start of the comment and `@@` is optional (i.e. `//@@` is also valid).
 
 ```
-//@@ This is a documentation line
-//@@ > Add _any_ kind of Markdown formatting here.
+// @@ This is a documentation line
+// @@ > Add _any_ kind of Markdown formatting here.
 ```
 
 An extra newline is added automatically after all non-contiguous documentation lines, _except_ between lines that are part of an ordered or unordered list, or a table (i.e. starting with `-`, `*`, or `1.`, `2.` and so on, or a line starting with `|`).
@@ -47,7 +47,7 @@ An extra newline is added automatically after all non-contiguous documentation l
 **Next-line appends** — if a line ends with a `\` character, the next line is appended to the current line as part of the documentation line. This is useful for including existing source code documentation (e.g. JSDoc) in your output. Any comment syntax on the next line is removed, including starting and ending comment characters (i.e. `/*`, `*/`, `//`, etc.).
 
 ```
-//@@ - Property: `name` --\
+// @@ - Property: `name` --\
 /** The customer name */
 name: string;
 ```
@@ -61,14 +61,14 @@ This results in the following output:
 **Imports** — you can directly import the content of one file inside another. The prefixed content of the imported file is then no longer included in the output on its own.
 
 ```
-//@@ +import ./some-file.js
-//@@ +import ./some-other-file.js
+// @@ +import ./some-file.js
+// @@ +import ./some-other-file.js
 ```
 
 **References** — you can also add a file directly to the list of references. The referenced files are traversed before all other files.
 
 ```
-//@@ +ref ./some-file.js
+// @@ +ref ./some-file.js
 ```
 
 ### File traversal and sorting

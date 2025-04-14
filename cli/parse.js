@@ -3,8 +3,8 @@ import { addNewline, collate } from "./collate.js";
 import { loadAndProcessFile } from "./loader.js";
 
 // Regular expressions for matching documentation patterns
-const DOC_FILE_PATTERN = /##@@\s+FeatureDoc\s+@@##/;
-const DOC_LINE_PATTERN = /^\s*(?:\/\/|##)@@\s?(.*)$/;
+const DOC_FILE_PATTERN = /## ?@@\s+FeatureDoc\s+@@ ?##/;
+const DOC_LINE_PATTERN = /^\s*(?:\/\/|##) ?@@\s?(.*)$/;
 const IMPORT_PATTERN = /^\s*\+import\s+(.+)\s*$/;
 const REF_PATTERN = /^\s*\+ref\s+(.+)\s*$/;
 
